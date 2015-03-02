@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ *
+ * sass --watch style.scss:style.min.css --style compressed
+ *
+ * Here we pull in some variables, include the inuit.css framework, then add our
+ * project-specific components afterwards.
+ */
+
+
+/**
+ * Setup
+ */
+@import "vars",
+		"../../bower_components/inuit.css/inuit",
+    "src/ui/page";
+
+
+/**
+ * She’s all yours, cap’n... Begin importing your stuff below.
+ */
+//@import "src/modules/example";
+//@import "src/plugins/example";
+
+/*===== yeoman styles-hook do-not-remove =====*/

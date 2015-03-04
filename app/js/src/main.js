@@ -7,12 +7,12 @@ var s = new Snap('.kings-landing'),
   arrowsAnim,
   kingsLanding,
   cloud,
+  clouds,
   cloudAnim,
   arrowGroup,
   sea,
   seaIn,
   seaOut,
-  seaTrans,
   runAnim,
   realPath,
   setupClouds,
@@ -50,8 +50,10 @@ initialise = function () {
 
 setupClouds = function () {
   var containerHeight = s.node.offsetHeight / 3,
-    containerWidth = s.node.offsetWidth * 2,
-    numberOfClouds = 40;
+    containerWidth = s.node.offsetWidth,
+    numberOfClouds = 10;
+
+  clouds = s.g();
 
   for (var i = numberOfClouds; i >= 0; i--) {
     var x = Math.floor(Math.random() * containerWidth),
@@ -65,7 +67,18 @@ setupClouds = function () {
     });
 
     newCloud.transform('s' + randomScale + ' ' + randomScale);
+
+    clouds.add(newCloud);
   }
+
+
+  s.select('.building').before(clouds);
+  s.select('.building').before(clouds.use().attr({
+    x: clouds.node.getBBox().width,
+    class: 'clouds'
+  }));
+
+  clouds.addClass('clouds');
 };
 
 setupCannon = function () {
@@ -77,37 +90,28 @@ setupCannon = function () {
 };
 
 cloudAnim = function () {
-  cloud.transform('t0,0');
-  cloud.animate({
-    transform: 't-' + s.node.offsetWidth * 2 + ',0'
-  }, 60000, cloudAnim);
+  clouds.transform('t0,0');
+  clouds.animate({
+    transform: 't-' + s.node.offsetWidth + ',0'
+  }, 30000, cloudAnim);
 };
 
 seaIn = function () {
   sea.animate({
     path: sea.node.dataset.transformPath
-  }, 2000, mina.easeout, seaOut);
+  }, 2500, mina.easeout, seaOut);
 };
 
 seaOut = function () {
   sea.animate({
     path: realPath
-  }, 2000,  mina.easeout, seaIn);
-};
-
-seaTrans = function () {
-  sea.transform('t0,0');
-  sea.animate({
-    transform: 't-485.28,0'
-  }, 10000, seaTrans);
+  }, 2500,  mina.easeout, seaIn);
 };
 
 runAnim = function () {
   // initiate sea animation
   seaIn();
-  seaTrans();
 
-  cloudAnim();
   cannonAnim();
   arrowsAnim();
 };
@@ -157,10 +161,11 @@ cannonAnim = function () {
 };
 
 triggerExplosion = function (element) {
+  console.log(element);
   var elToAnim = s.select(element.node.dataset.transformElement),
     pathLastPoint = Snap.path.getPointAtLength(element, Snap.path.getTotalLength(element)),
     matrix = new Snap.Matrix();
-  console.log('triggerExplosion', elToAnim, pathLastPoint);
+
   elToAnim.animate({
     transform: matrix.scale(3, 3, pathLastPoint.x, pathLastPoint.y),
     opacity: 0
@@ -188,12 +193,9 @@ animateGroupAlongPath = function (path, element, start, dur, callback) {
 animateAlongPath = function (path, element, start, dur, callback) {
   var len = Snap.path.getTotalLength(path);
 
-  console.log(len, path);
   Snap.animate(start, len, function (value) {
     var movePoint = Snap.path.getPointAtLength(path, value);
 
-
-    console.log(movePoint);
 
     element.attr({ cx: movePoint.x, cy: movePoint.y });
   }, dur, mina.easeinout, function () {

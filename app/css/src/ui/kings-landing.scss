@@ -1,0 +1,31 @@
+
+.sea {
+  transform: translate3d(0,0,0);
+  animation: sea-anim 10s infinite linear;
+}
+
+.clouds {
+  transform: translate3d(0,0,0);
+  animation: clouds-anim 20s infinite linear;
+}
+
+.scale {
+  transform-origin: bottom center;
+  transform: scale(0);
+
+  &.animate {
+    transition: all 2s ease-out;
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+@keyframes sea-anim {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-242.64px, 0, 0); }
+}
+
+@keyframes clouds-anim {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}

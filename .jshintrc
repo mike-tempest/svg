@@ -18,5 +18,5 @@
     "trailing": true,
     "smarttabs": true,
     "white": true,
-    "predef": ["Snap", "mina", "Matrix"]
+    "predef": ["Snap", "mina", "Matrix", "document", "window"]
 }

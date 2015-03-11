@@ -1,0 +1,76 @@
+.gotham-city {
+  svg {
+    width: 100%;
+  }
+}
+
+
+.gotham__border {
+  -webkit-animation: border-anim 7s infinite linear;  
+}
+
+.gotham__light {
+  opacity: 0;
+  -webkit-animation: light-anim 7s infinite linear;  
+}
+
+.gotham__background {
+  -webkit-animation: background-anim 7s infinite linear;  
+}
+
+.gotham__silhouette {
+  -webkit-animation: silhouette-anim 7s infinite linear;  
+}
+
+
+@-webkit-keyframes background-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80%   { fill: #333738; }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% { fill: #6D6C6D; }
+}
+
+@-webkit-keyframes silhouette-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80%   { fill: #141414; }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% { fill: #352317; }
+}
+
+@-webkit-keyframes border-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80%   { fill: #6A5629; }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% { fill: #FCB94B; }
+}
+
+@-webkit-keyframes light-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80%   { opacity: 0; }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% { opacity: 1; }
+}

@@ -68,10 +68,10 @@ module.exports = function (grunt) {
             },
             scripts: {
                 files: ['<%=yeoman.app %>/js/src/**/*.js'],
-                tasks: ['jshint', 'concat']
+                tasks: ['jshint']
             },
             livereload: {
-                tasks: ['jshint', 'concat'],
+                tasks: ['jshint'],
                 files: [
                     '<%=yeoman.app %>/{,*/}*.html',
                     '<%=yeoman.app %>/css/{,*/}*.css',
@@ -166,29 +166,6 @@ module.exports = function (grunt) {
                 '<%= yeoman.app %>/js/src/*.js'
             ]
         },
-        // concat plugins and devscripts into one almighty!!!
-        concat: {
-            options: {
-                separator: ';',
-            },
-            dist: {
-                src: [
-                    '<%= yeoman.app %>/js/src/main.js'
-                ],
-                dest: '<%= yeoman.app %>/js/scripts.js',
-            },
-        },
-        // minify js
-        uglify: {
-            dist: {
-                options: {
-                    banner: '/*! generator-inuit */\n'
-                },
-                files: {
-                    '<%= yeoman.dist %>/js/scripts.js': ['<%= yeoman.app %>/js/scripts.js']
-                }
-            }
-        },
         // cleanup build assets
         clean: {
             dist: {
@@ -249,7 +226,6 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'concurrent:serve',
-            'concat',
             'connect:livereload',
             'autoprefixer',
             'open:server',

@@ -3274,34 +3274,182 @@ body {
 
 /* line 11, src/ui/page.scss */
 .article {
-  height: 600px;
+  display: block;
+  height: 500px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+/* line 2, src/ui/gotham-city.scss */
+.gotham-city svg {
   width: 100%;
 }
 
-/* line 16, src/ui/page.scss */
-.sea {
-  -webkit-animation: sea-anim 10s infinite linear;
+/* line 8, src/ui/gotham-city.scss */
+.gotham__border {
+  -webkit-animation: border-anim 7s infinite linear;
 }
 
-/* line 20, src/ui/page.scss */
+/* line 12, src/ui/gotham-city.scss */
+.gotham__light {
+  opacity: 0;
+  -webkit-animation: light-anim 7s infinite linear;
+}
+
+/* line 17, src/ui/gotham-city.scss */
+.gotham__background {
+  -webkit-animation: background-anim 7s infinite linear;
+}
+
+/* line 21, src/ui/gotham-city.scss */
+.gotham__silhouette {
+  -webkit-animation: silhouette-anim 7s infinite linear;
+}
+
+@-webkit-keyframes background-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80% {
+    fill: #333738;
+  }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% {
+    fill: #6D6C6D;
+  }
+}
+@-webkit-keyframes silhouette-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80% {
+    fill: #141414;
+  }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% {
+    fill: #352317;
+  }
+}
+@-webkit-keyframes border-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80% {
+    fill: #6A5629;
+  }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% {
+    fill: #FCB94B;
+  }
+}
+@-webkit-keyframes light-anim {
+  0%, 10%, 
+  21%, 23%,
+  25%, 27%,
+  37%, 55%,
+  57%, 61%,
+  63%,
+  80% {
+    opacity: 0;
+  }
+  11%, 20%, 22%, 24%, 28%, 36%, 38%,
+  54%, 56%, 58%, 62%, 64%,
+  79% {
+    opacity: 1;
+  }
+}
+/* line 2, src/ui/kings-landing.scss */
+.sea {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation: sea-anim 10s infinite linear;
+  animation: sea-anim 10s infinite linear;
+}
+
+/* line 7, src/ui/kings-landing.scss */
 .clouds {
-  -webkit-animation: clouds-anim 15s infinite linear;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation: clouds-anim 20s infinite linear;
+  animation: clouds-anim 20s infinite linear;
+}
+
+/* line 12, src/ui/kings-landing.scss */
+.scale {
+  -webkit-transform-origin: bottom center;
+  -ms-transform-origin: bottom center;
+  transform-origin: bottom center;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+/* line 16, src/ui/kings-landing.scss */
+.scale.animate {
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
+  opacity: 0;
+  -webkit-transform: scale(3);
+  -ms-transform: scale(3);
+  transform: scale(3);
 }
 
 @-webkit-keyframes sea-anim {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
     -webkit-transform: translate3d(-242.64px, 0, 0);
+    transform: translate3d(-242.64px, 0, 0);
+  }
+}
+
+@keyframes sea-anim {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-242.64px, 0, 0);
+    -ms-transform: translate3d(-242.64px, 0, 0);
+    transform: translate3d(-242.64px, 0, 0);
   }
 }
 @-webkit-keyframes clouds-anim {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
     -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes clouds-anim {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 /**

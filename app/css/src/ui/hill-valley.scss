@@ -1,0 +1,16 @@
+.hill-valley {
+  svg {
+    width: 100%;
+  }
+}
+
+.hill-valley__clouds {
+  transform: translate3d(0,0,0);
+  animation: clouds-anim 4s infinite linear;
+}
+
+@keyframes clouds-anim {
+  0%   { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-10%, 0, 0); }
+  100% { transform: translate3d(-200%, 0, 0); }
+}

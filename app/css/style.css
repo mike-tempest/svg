@@ -3375,47 +3375,6 @@ body {
   width: 100%;
 }
 
-/* line 7, src/ui/hill-valley.scss */
-.hill-valley__clouds {
-  -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  -webkit-animation: cloud-anim 4s infinite linear;
-  animation: cloud-anim 4s infinite linear;
-}
-
-@-webkit-keyframes cloud-anim {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    -webkit-transform: translate3d(-10%, 0, 0);
-    transform: translate3d(-10%, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(-200%, 0, 0);
-    transform: translate3d(-200%, 0, 0);
-  }
-}
-
-@keyframes cloud-anim {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    -webkit-transform: translate3d(-10%, 0, 0);
-    -ms-transform: translate3d(-10%, 0, 0);
-    transform: translate3d(-10%, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(-200%, 0, 0);
-    -ms-transform: translate3d(-200%, 0, 0);
-    transform: translate3d(-200%, 0, 0);
-  }
-}
 /* line 2, src/ui/kings-landing.scss */
 .sea {
   -webkit-transform: translate3d(0, 0, 0);

@@ -3380,11 +3380,11 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-animation: clouds-anim 4s infinite linear;
-  animation: clouds-anim 4s infinite linear;
+  -webkit-animation: cloud-anim 4s infinite linear;
+  animation: cloud-anim 4s infinite linear;
 }
 
-@-webkit-keyframes clouds-anim {
+@-webkit-keyframes cloud-anim {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -3399,7 +3399,7 @@ body {
   }
 }
 
-@keyframes clouds-anim {
+@keyframes cloud-anim {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -3474,6 +3474,16 @@ body {
     -webkit-transform: translate3d(-242.64px, 0, 0);
     -ms-transform: translate3d(-242.64px, 0, 0);
     transform: translate3d(-242.64px, 0, 0);
+  }
+}
+@-webkit-keyframes clouds-anim {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 @keyframes clouds-anim {

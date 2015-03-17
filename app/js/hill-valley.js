@@ -6,6 +6,10 @@ var s = new Snap('.hill-valley'),
   setupClouds,
   cloud,
   clouds,
+  tree,
+  leaves,
+  treeDim = [],
+  leavesDim = [],
   animateTrees,
   loopAnimation;
 
@@ -29,8 +33,15 @@ Snap.load('img/hill-valley.svg', function (response) {
 });
 
 initialise = function () {
+  tree = s.selectAll('.tree');
+  leaves = s.selectAll('.leaves');
+
   cloud = s.select('.cloud');
   setupClouds();
+
+  for (var i = 0; i < tree.length; i++) {
+    treeDim.push(tree[i].getBBox());
+  };
 
   loopAnimation();
 };
@@ -79,29 +90,30 @@ loopAnimation = function () {
 };
 
 animateTrees = function () {
-  var tree = s.select('.tree'),
-    leaves = s.select('.leaves');
 
-  leaves.transform('r0,0,0');
+  // leaves.transform('r0,0,0');
 
-  leaves.animate({
-    transform: 'r-10,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
-  }, 2000, function () {
-    leaves.animate({
-      transform: 'r25,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
-    }, 20, mina.easeinout, function (){
-      leaves.animate({
-        transform: 'r0,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
+  // leaves.animate({
+  //   transform: 'r-10,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
+  // }, 2000, function () {
+  //   leaves.animate({
+  //     transform: 'r25,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
+  //   }, 20, mina.easeinout, function (){
+  //     leaves.animate({
+  //       transform: 'r0,' + (leaves.getBBox().x + (leaves.getBBox().width / 2)) + ',' + (leaves.getBBox().y + leaves.getBBox().height)
+  //     }, 1000, mina.elastic);
+  //   });
+  // });
+
+  for (var i = tree.length - 1; i >= 0; i--) {
+    tree[i].animate({
+      transform: 'r-5,' + (treeDim[i].x + (treeDim[i].width / 2)) + ',' + (treeDim[i].y + treeDim[i].height)
+    }, 2000, function (obj, b) {
+      console.log(this);
+      s.select('#' + this.id).animate({
+        transform: 'r0,0,0'
       }, 1000, mina.elastic);
     });
-  });
-
-  tree.animate({
-    transform: 'r-5,' + (tree.getBBox().x + (tree.getBBox().width / 2)) + ',' + (tree.getBBox().y + tree.getBBox().height)
-  }, 2000, function () {
-    tree.animate({
-      transform: 'r0,' + (tree.getBBox().x + (tree.getBBox().width / 2)) + ',' + (tree.getBBox().y + tree.getBBox().height)
-    }, 1000, mina.elastic);
-  });
+  };
 };
 

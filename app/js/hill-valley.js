@@ -6,6 +6,8 @@ var s = new Snap('.hill-valley'),
   setupClouds,
   animateText,
   textElems,
+  clockMinute,
+  clockHour,
   cloudWidth,
   cloud,
   clouds,
@@ -21,6 +23,7 @@ var s = new Snap('.hill-valley'),
   carMidMatrix = new Snap.Matrix(),
   carEndMatrix = new Snap.Matrix(),
   animateTrees,
+  animateClock,
   treeAnim,
   leavesAnim,
   loopAnimation;
@@ -50,6 +53,8 @@ initialise = function () {
   car = s.select('.car');
   cloudsCont = s.select('.hill-valley__clouds');
   textElems = s.selectAll('.text');
+  clockMinute = s.select('.clock__minute');
+  clockHour = s.select('.clock__hour');
 
   cloud = s.select('.cloud');
 
@@ -129,6 +134,7 @@ loopAnimation = function () {
   animateCar();
   animateClouds();
   animateText();
+  animateClock();
 
   setTimeout(loopAnimation, 4000);
 };
@@ -150,6 +156,34 @@ animateCar = function () {
           }, 750)
         });
       }, 500);
+    });
+  });
+};
+
+animateClock = function () {
+  clockMinute.transform('r0,195.5,105.5');
+  clockHour.transform('r0,195.5,105.5');
+
+  clockMinute.animate({
+    transform: 'r90,195.5,105.5'
+  },1250, function () {
+    clockMinute.animate({
+      transform: 'r1260,195.5,105.5'
+    },500, function () {
+      clockMinute.animate({
+        transform: 'r1440,195.5,105.5'
+      }, 2250)
+    });
+  });
+  clockHour.animate({
+    transform: 'r10,195.5,105.5'
+  },1250, function () {
+    clockHour.animate({
+      transform: 'r290,195.5,105.5'
+    },500, function () {
+      clockHour.animate({
+        transform: 'r360,195.5,105.5'
+      },2250);
     });
   });
 };
